@@ -1,0 +1,6 @@
+include LICENSE
+include MANIFEST.in
+include README.md
+include setup.py
+include setup.cfg
+recursive-include llama_index *.py
