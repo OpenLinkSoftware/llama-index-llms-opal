@@ -31,7 +31,7 @@
 -  "Demo.demo.execute_sql_query",
 -  "Demo.demo.execute_spasql_query",
 
-## Supported finetunes:
+### Supported finetunes:
 -  "system-virtuoso-support-assistant-config",
 -  "system-virtuososupportassistantconfiglast",
 -  "system-uda-support-assistant-config",
