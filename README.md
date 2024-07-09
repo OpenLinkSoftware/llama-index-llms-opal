@@ -71,7 +71,7 @@
     ) -> None:
 ```
 
-#### Examples
+#### Example:
   `pip install git+https://github.com/OpenLinkSoftware/llama-index-llms-opal.git`
 
 ```python
