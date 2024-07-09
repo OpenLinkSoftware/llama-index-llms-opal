@@ -87,7 +87,8 @@ class OPAL(LLM):
     OpenLink  LLM.
 
     Examples:
-        `pip install llama-index-llms-opal`
+        ## `pip install llama-index-llms-opal`
+        `pip install git+https://github.com/OpenLinkSoftware/llama-index-llms-opal.git`
 
         ```python
         import os
