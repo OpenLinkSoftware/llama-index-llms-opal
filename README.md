@@ -70,6 +70,27 @@
         output_parser: Optional[BaseOutputParser] = None,
     ) -> None:
 ```
+
+#### Examples
+  `pip install git+https://github.com/OpenLinkSoftware/llama-index-llms-opal.git`
+
+```python
+
+        import os
+        os.environ["OPENAI_API_KEY"] = "sk-xxxxxxxxxxxxx"
+        os.environ["OPENLINK_API_KEY"] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+        from llama_index.llms.opal import OPAL
+
+        llm = OPAL()
+        resp = llm.complete("Paul Graham is")
+        print(resp)
+
+```
+
+
+
+
 #### How to get OPENLINK_API_KEY
 It could be get on url: https://linkeddata.uriburner.com/oauth/applications.vsp
 
