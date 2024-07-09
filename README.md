@@ -92,7 +92,7 @@
 
 
 #### How to get OPENLINK_API_KEY
-It could be get on url: https://linkeddata.uriburner.com/oauth/applications.vsp
+Visit the API Key Generation Page at: https://linkeddata.uriburner.com/oauth/applications.vsp
 
 ### Authors
 - 2024, OpenLink Software
