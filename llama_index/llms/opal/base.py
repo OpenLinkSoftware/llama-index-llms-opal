@@ -223,8 +223,8 @@ class OPAL(LLM):
         return LLMMetadata(
             context_window=16384, ## TODO ??
             num_output=self.max_tokens or -1,
-            model_name=self.model_id,
-            is_chat_model=True,  # TODO ?? Opal supports chat API for all models
+            model_name=self.model,
+            is_chat_model=False, #True,  # TODO ?? Opal supports chat API for all models
         )
 
     @llm_completion_callback()
@@ -256,7 +256,7 @@ class OPAL(LLM):
                 raise (ValueError("Could not create Chat"))
 
         payload["chat_id"] = chat_id
-        payload["question"] = prompt ## "Paul Graham is" ## TODO ????????????????
+        payload["question"] = prompt
 
         with httpx.Client(timeout=Timeout(self.request_timeout)) as client:
             response = client.post(
