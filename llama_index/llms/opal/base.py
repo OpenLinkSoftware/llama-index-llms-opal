@@ -224,7 +224,7 @@ class OPAL(LLM):
             context_window=16384, ## TODO ??
             num_output=self.max_tokens or -1,
             model_name=self.model,
-            is_chat_model=False, #True,  # TODO ?? Opal supports chat API for all models
+            is_chat_model=False,  
         )
 
     @llm_completion_callback()
