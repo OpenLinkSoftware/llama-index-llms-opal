@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import sys
 import os
 
-version = '0.1.1'
+version = '0.1.2'
 
 readme = os.path.join(os.path.dirname(__file__), "README.md")
 

@@ -119,6 +119,8 @@ class OPAL(LLM):
         default=None,
         description="The maximum number of tokens to generate.",
     )
+    continue_chat: bool = Field(description="Continue chat with LLM calls",
+        default=False)
 
     openai_key: str = Field(default=None, description="OpenAI API Key",)
     api_key: str = Field(default=None, description="OpenLink API Key",)
@@ -154,6 +156,7 @@ class OPAL(LLM):
     )
 
     _api_url = PrivateAttr()
+    _chat_id = PrivateAttr()
 
     def __init__(
         self,
@@ -166,6 +169,7 @@ class OPAL(LLM):
 
         temperature: Optional[float] = 0.2,
         top_p: Optional[float] = 0.5,
+        continue_chat: bool = False,
         max_tokens: Optional[int] = None,
         additional_kwargs: Optional[Dict[str, Any]] = None,
         callback_manager: Optional[CallbackManager] = None,
@@ -196,6 +200,8 @@ class OPAL(LLM):
             output_parser=output_parser,
         )
 
+        self._chat_id = None
+        self.continue_chat=continue_chat
         self.openai_key=openai_key
         self.api_key=api_key
         self.top_p = top_p
@@ -238,22 +244,26 @@ class OPAL(LLM):
             "temperature": self.temperature,
             "top_p": self.top_p,
         }
-        chat_id = None
-        payload["chat_id"] = self.finetune
+        chat_id = self._chat_id if self.continue_chat else None
+
         payload["call"] = self.funcs_list
         payload["fine_tune"] = self.finetune
 
-        with httpx.Client(timeout=Timeout(self.request_timeout)) as client:
-            response = client.post(
-                url=self._api_url,
-                json=payload,
-                headers=self.headers,
-            )
-            response.raise_for_status()
-            raw = response.json()
-            chat_id = raw.get("chat_id")
-            if chat_id is None:
-                raise (ValueError("Could not create Chat"))
+        if chat_id is None:
+            payload["chat_id"] = self.finetune
+            with httpx.Client(timeout=Timeout(self.request_timeout)) as client:
+                response = client.post(
+                    url=self._api_url,
+                    json=payload,
+                    headers=self.headers,
+                )
+                response.raise_for_status()
+                raw = response.json()
+                chat_id = raw.get("chat_id")
+                if chat_id is None:
+                    raise (ValueError("Could not create Chat"))
+                if self.continue_chat:
+                    self._chat_id = chat_id
 
         payload["chat_id"] = chat_id
         payload["question"] = prompt
