@@ -53,7 +53,7 @@
         self,
         model: Optional[str] = "gpt-4o",
         finetune: Optional[str] = "system-data-twingler-config",
-        funcs_list: Optional[list()] = ["UB.DBA.sparqlQuery", "DB.DBA.vos_howto_search", "Demo.demo.execute_sql_query", "DB.DBA.graphqlQuery"],
+        funcs_list: Optional[list] = ["UB.DBA.sparqlQuery", "DB.DBA.vos_howto_search", "Demo.demo.execute_sql_query", "DB.DBA.graphqlQuery"],
         api_base: Optional[str] = "https://linkeddata.uriburner.com",
         api_key: Optional[str] = None,
         openai_key: Optional[str] = None,
@@ -76,15 +76,15 @@
 
 ```python
 
-        import os
-        os.environ["OPENAI_API_KEY"] = "sk-xxxxxxxxxxxxx"
-        os.environ["OPENLINK_API_KEY"] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+import os
+os.environ["OPENAI_API_KEY"] = "sk-xxxxxxxxxxxxx"
+os.environ["OPENLINK_API_KEY"] = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
-        from llama_index.llms.opal import OPAL
+from llama_index_opal import OPAL
 
-        llm = OPAL()
-        resp = llm.complete("Paul Graham is")
-        print(resp)
+llm = OPAL()
+resp = llm.complete("Paul Graham is")
+print(resp)
 
 ```
 
