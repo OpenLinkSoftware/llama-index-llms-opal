@@ -35,7 +35,7 @@ setup(name="llama-index-llms-opal",
     },
     packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
     include_package_data=True,
-    install_requires=["llama-index-core>=0.10.39", "httpx"],
+    install_requires=["llama-index-core>=0.10.55", "httpx"],
     zip_safe=False,
     tests_require=["nose"],
     entry_points={

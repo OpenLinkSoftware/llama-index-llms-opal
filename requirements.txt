@@ -1,2 +1,2 @@
-llama-index-core = "^0.10.39"
+llama-index-core>=0.10.55
 httpx
