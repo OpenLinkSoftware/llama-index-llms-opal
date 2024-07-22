@@ -162,7 +162,7 @@ class OPAL(LLM):
         self,
         model: Optional[str] = "gpt-4o",
         finetune: Optional[str] = "system-data-twingler-config",
-        funcs_list: Optional[list()] = ["UB.DBA.sparqlQuery", "DB.DBA.vos_howto_search", "Demo.demo.execute_sql_query", "DB.DBA.graphqlQuery"],
+        funcs_list: Optional[list] = ["UB.DBA.sparqlQuery", "DB.DBA.vos_howto_search", "Demo.demo.execute_sql_query", "DB.DBA.graphqlQuery"],
         api_base: Optional[str] = "https://linkeddata.uriburner.com",
         api_key: Optional[str] = None,
         openai_key: Optional[str] = None,
