@@ -1,2 +1,3 @@
 llama-index-core>=0.10.55
+llama-index>=0.10.55
 httpx
