@@ -1,6 +1,6 @@
-# Virtuoso OPAL LLamaIndex Integration
+# OpenLink AI Layer (OPAL) Data Connectivity Middleware Module & Persistence Layer for LLamaIndex
 
-### Supported models:
+### Supported Language Models:
 -  "gpt-4o",
 -  "gpt-4-vision-preview",
 -  "gpt-4-turbo-preview",
@@ -22,7 +22,7 @@
 -  "dall-e-3",
 -  "dall-e-2",
 
-### Supported functions:
+### Prebuilt Functions for LLM Invocation:
 -  "DB.DBA.graphqlQuery",
 -  "DB.DBA.graphqlEndpointQuery",
 -  "UB.DBA.uda_howto",
@@ -31,7 +31,7 @@
 -  "Demo.demo.execute_sql_query",
 -  "Demo.demo.execute_spasql_query",
 
-### Supported finetunes:
+### Predefined Assistants (Fine-tunning Modules):
 -  "system-virtuoso-support-assistant-config",
 -  "system-virtuososupportassistantconfiglast",
 -  "system-uda-support-assistant-config",
@@ -39,7 +39,7 @@
 -  "system-www-support-assistant-config",
 -  "system-data-twingler-config",
 
-#### Default:
+#### Default Settings:
 - **api_base**: "https://linkeddata.uriburner.com"
 - **model**: "gpt-4o"
 - **functions**: ["UB.DBA.sparqlQuery", "DB.DBA.vos_howto_search", "Demo.demo.execute_sql_query", "DB.DBA.graphqlQuery"]
@@ -47,7 +47,7 @@
 -  **temperature**: 0.2
 -  **top_p**: 0.5
 
-#### OPAL class constructor parameters and default values:
+#### OPAL class constructor parameters and default settings:
 ```python
     def __init__(
         self,
@@ -71,7 +71,7 @@
     ) -> None:
 ```
 
-#### Example:
+#### Basic Usage Example:
   `pip install git+https://github.com/OpenLinkSoftware/llama-index-llms-opal.git`
 
 ```python
