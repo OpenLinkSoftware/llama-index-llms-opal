@@ -1,6 +1,6 @@
 import os
 import json
-from typing import Any, Callable, Dict, Optional, Sequence, Tuple
+from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple
 
 import httpx
 from httpx import Timeout
@@ -150,7 +150,7 @@ class OPAL_Assistant(LLM):
         description="The base URL for OPAL API.",
     )
 
-    funcs_list = []
+    funcs_list: List[str]
 
     request_timeout: float = Field(
         default=DEFAULT_REQUEST_TIMEOUT,
@@ -185,7 +185,7 @@ class OPAL_Assistant(LLM):
         self,
         assistant_id: Optional[str] = "asst_IcfB5bT1ep4SQW5vbNFChnX4",
         model: Optional[str] = "",
-        funcs_list: Optional[list()] = [], # type: ignore
+        funcs_list: Optional[List[str]] = None, # type: ignore
         api_base: Optional[str] = "https://linkeddata.uriburner.com",
         api_key: Optional[str] = None,
         openai_key: Optional[str] = None,
@@ -226,13 +226,15 @@ class OPAL_Assistant(LLM):
             output_parser=output_parser,
         )
 
+        if funcs_list is None:
+            funcs_list = []
+        self.funcs_list = funcs_list
         self._thread_id = None
         self.continue_thread=continue_thread
         self.openai_key=openai_key
         self.api_key=api_key
         self.top_p = top_p
         self.assistant_id = assistant_id
-        self.funcs_list = funcs_list
         self.headers = {
             "accept": "application/json",
             "content-type": "application/json",
@@ -453,7 +455,7 @@ class OPAL(LLM):
         description="The base URL for OPAL API.",
     )
     finetune: str = Field(description="Finetune mode", default="system-data-twingler-config")
-    funcs_list = ["UB.DBA.sparqlQuery", "DB.DBA.vos_howto_search", "Demo.demo.execute_sql_query", "DB.DBA.graphqlQuery"]
+    funcs_list: List[str] = ["UB.DBA.sparqlQuery", "DB.DBA.vos_howto_search", "Demo.demo.execute_sql_query", "DB.DBA.graphqlQuery"]
 
     request_timeout: float = Field(
         default=DEFAULT_REQUEST_TIMEOUT,
@@ -486,7 +488,7 @@ class OPAL(LLM):
         self,
         model: Optional[str] = "gpt-4o",
         finetune: Optional[str] = "system-data-twingler-config",
-        funcs_list: Optional[list()] = ["UB.DBA.sparqlQuery", "DB.DBA.vos_howto_search", "Demo.demo.execute_sql_query", "DB.DBA.graphqlQuery"], # type: ignore
+        funcs_list: Optional[List[str]] = ["UB.DBA.sparqlQuery", "DB.DBA.vos_howto_search", "Demo.demo.execute_sql_query", "DB.DBA.graphqlQuery"], # type: ignore
         api_base: Optional[str] = "https://linkeddata.uriburner.com",
         api_key: Optional[str] = None,
         openai_key: Optional[str] = None,
