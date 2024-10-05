@@ -143,14 +143,14 @@ class OPAL_Assistant(LLM):
     continue_thread: bool = Field(description="Continue thread with LLM calls",
         default=False)
 
-    openai_key: str = Field(default=None, description="OpenAI API Key",)
-    api_key: str = Field(default=None, description="OpenLink API Key",)
+    openai_key: Optional[str] = Field(default=None, description="OpenAI API Key",)
+    api_key: Optional[str] = Field(default=None, description="OpenLink API Key")
     api_base: str = Field(
         default="https://linkeddata.uriburner.com",
         description="The base URL for OPAL API.",
     )
 
-    funcs_list: List[str]
+    funcs_list: Optional[List[str]] = Field(default=None, description="List of functions", nullable=True)
 
     request_timeout: float = Field(
         default=DEFAULT_REQUEST_TIMEOUT,
@@ -444,8 +444,8 @@ class OPAL(LLM):
     continue_chat: bool = Field(description="Continue chat with LLM calls",
         default=False)
 
-    openai_key: str = Field(default=None, description="OpenAI API Key",)
-    api_key: str = Field(default=None, description="OpenLink API Key",)
+    openai_key: Optional[str] = Field(default=None, description="OpenAI API Key",)
+    api_key: Optional[str] = Field(default=None, description="OpenLink API Key",)
     api_base: str = Field(
         default="https://linkeddata.uriburner.com",
         description="The base URL for OPAL API.",
