@@ -160,9 +160,6 @@ class OPAL_Assistant(LLM):
     additional_kwargs: Dict[str, Any] = Field(
         default_factory=dict, description="Additional Kwargs for the OPAL model"
     )
-    model_info: Dict[str, Any] = Field(
-        default_factory=dict, description="Details about the selected model"
-    )
 
     @property
     def _openlink_api_key(self) -> str:
@@ -216,7 +213,6 @@ class OPAL_Assistant(LLM):
             additional_kwargs=additional_kwargs,
             api_base=api_base,
             api_key=api_key,
-            # model_info=self._model.get_details(),
             callback_manager=callback_manager,
             # base class
             system_prompt=system_prompt,
@@ -465,9 +461,6 @@ class OPAL(LLM):
     additional_kwargs: Dict[str, Any] = Field(
         default_factory=dict, description="Additional Kwargs for the OPAL model"
     )
-    model_info: Dict[str, Any] = Field(
-        default_factory=dict, description="Details about the selected model"
-    )
 
     @property
     def _openlink_api_key(self) -> str:
@@ -516,7 +509,6 @@ class OPAL(LLM):
             additional_kwargs=additional_kwargs,
             api_base=api_base,
             api_key=api_key,
-            # model_info=self._model.get_details(),
             callback_manager=callback_manager,
             # base class
             system_prompt=system_prompt,
