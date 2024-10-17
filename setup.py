@@ -6,7 +6,7 @@ version = '0.3.1'
 
 readme = os.path.join(os.path.dirname(__file__), "README.md")
 
-setup(name="llama-index-llms-opal",
+setup(name="llama-index-opal",
     version=version,
     description="OpenLink Virtuoso OPAL Integration",
     long_description=open(readme).read(),
