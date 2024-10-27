@@ -1,5 +1,7 @@
 # OpenLink AI Layer (OPAL) Data Connectivity Middleware Module & Persistence Layer for LLamaIndex
 
+![Virtuoso Support Assistant Demo](https://www.openlinksw.com/data/gifs/LlamaIndex-opal-virtuoso-support-agent-demo-2.gif)
+
 ### Supported Language Models:
 -  "gpt-4o",
 -  "gpt-4-vision-preview",
@@ -91,9 +93,9 @@ print(resp)
 
 
 
-#### How to get OPENLINK_API_KEY
+#### How do I obtain an OPENLINK_API_KEY?
 Visit the API Key Generation Page at: https://linkeddata.uriburner.com/oauth/applications.vsp
 
 ### Authors
-- 2024, OpenLink Software
+- OpenLink Software
 
